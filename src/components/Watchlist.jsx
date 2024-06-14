@@ -1,6 +1,13 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
 
-const Watchlist = ({ watchlist, removefromWatchlist}) => {
+const Watchlist = ({ watchlist,}) => {
+  const [search, setSearch] = useState("");
+
+  function handleSearch(e) {
+    setSearch(e.target.value)
+  }
+
   return (
     <div>
       <div className="flex justify-center gap-6">
@@ -25,6 +32,8 @@ const Watchlist = ({ watchlist, removefromWatchlist}) => {
       </div>
       <div className="flex justify-center m-5">
         <input
+          onChange={handleSearch}
+          value={search}
           type="text"
           className="bg-slate-200 rounded-lg align-center px-2"
           placeholder="Search Movie"
@@ -41,22 +50,31 @@ const Watchlist = ({ watchlist, removefromWatchlist}) => {
             </tr>
           </thead>
           <tbody>
-            {watchlist.map((movieObj) => {
-              return<>
-              <tr className="border-b-2">
-                <td className="flex gap-2 items-center">
-                  <img
-                    className="h-[10rem] w-[7rem] m-2"
-                    src={`https://image.tmdb.org/t/p/original/${movieObj.poster_path}`}
-                  />
-                  <div className="mx-10">{movieObj.title}</div>
-                </td>
-                <td>{movieObj.vote_average}</td>
-                <td>{movieObj.popularity}</td>
-                <td>Action</td>
-                <td className="text-red-800">Delete</td>
-              </tr></>
-            })}
+            {watchlist
+              .filter((movieObj) => {
+                return movieObj.title
+                  .toLowerCase()
+                  .includes(search.toLocaleLowerCase());
+              })
+              .map((movieObj) => {
+                return (
+                  <>
+                    <tr className="border-b-2">
+                      <td className="flex gap-2 items-center">
+                        <img
+                          className="h-[10rem] w-[7rem] m-2"
+                          src={`https://image.tmdb.org/t/p/original/${movieObj.poster_path}`}
+                        />
+                        <div className="mx-10">{movieObj.title}</div>
+                      </td>
+                      <td>{movieObj.vote_average}</td>
+                      <td>{movieObj.popularity}</td>
+                      <td>Action</td>
+                      <td className="text-red-800">Delete</td>
+                    </tr>
+                  </>
+                );
+              })}
           </tbody>
         </table>
       </div>
