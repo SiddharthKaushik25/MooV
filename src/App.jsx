@@ -18,9 +18,9 @@ function App() {
 
   function removefromWatchlist(movieObj){
     let newWatchlist = watchlist.filter((movie) => movie.id !== movieObj.id);
+    localStorage.setItem('movies', JSON.stringify(newWatchlist))
     setWatchlist(newWatchlist);
     //console.log(newWatchlist);
-
   }
 
   useEffect(()=>{
@@ -29,7 +29,7 @@ function App() {
       return
     }
     setWatchlist(JSON.parse(storedMovies))
-  })
+  },[])
 
   return (
     <>
@@ -45,7 +45,7 @@ function App() {
               </>
             }
           />
-          <Route path="/Watchlist" element={<Watchlist watchlist={watchlist}/>} />
+          <Route path="/Watchlist" element={<Watchlist watchlist={watchlist} removefromWatchlist={removefromWatchlist}/>} />
         </Routes>
       </BrowserRouter>
     </>

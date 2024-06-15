@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
-const Watchlist = ({ watchlist,}) => {
+const Watchlist = ({ watchlist, removefromWatchlist}) => {
   const [search, setSearch] = useState("");
 
   function handleSearch(e) {
@@ -70,7 +70,7 @@ const Watchlist = ({ watchlist,}) => {
                       <td>{movieObj.vote_average}</td>
                       <td>{movieObj.popularity}</td>
                       <td>Action</td>
-                      <td className="text-red-800">Delete</td>
+                      <td onClick={()=>removefromWatchlist(movieObj)} className="text-red-800">Delete</td>
                     </tr>
                   </>
                 );
