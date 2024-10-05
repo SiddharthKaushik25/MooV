@@ -7,7 +7,7 @@ const Banner = () => {
       <div
         className="h-[80vh] md:h-[70vh] bg-cover bg-center flex items-end"
         style={{
-          backgroundImage: `url(../../poster.jpg)` ,
+          backgroundImage: `url(https://film-prof.com/wp-content/uploads/2024/04/mcddupa_wb041-e1708041579639.webp)` ,
           backgroundPosition: 'center',
           backgroundRepeat: 'repeat',
           backgroundSize: 'cover',
