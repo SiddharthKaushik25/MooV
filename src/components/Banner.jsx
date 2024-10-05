@@ -5,12 +5,15 @@ const Banner = () => {
   return (
     <div>
       <div
-        className="h-[80vh] md:h-[70h] bg-cover bg-center flex items-end"
+        className="h-[80vh] md:h-[70vh] bg-cover bg-center flex items-end"
         style={{
-          backgroundImage: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGbY4TL6izUOWJp7LJjGfGWZsY-lWfExszHA&s)`,
+          backgroundImage: `url(../../poster.jpg)` ,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'repeat',
+          backgroundSize: 'cover',
         }}
       >
-        <div className="text-white w-full text-xl text-center bg-gray-900/60">THiS IS BANNER</div>
+        <div className="text-white w-full text-xl text-center bg-gray-900/60">Top Rated Movies</div>
       </div>
     </div>
   );
